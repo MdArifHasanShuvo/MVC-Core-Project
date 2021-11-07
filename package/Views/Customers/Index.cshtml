@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Customer>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Customers</h3>
+        <div class="d-flex justify-content-end mb-1">
+            <a class="btn btn-outline-primary" asp-controller="Customers" asp-action="Create">New<b>+</b></a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Phone</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var arif in Model)
+                {
+                    <tr style="background-color: rgba(100, 118, 135, .2)">
+                        <td>@arif.CustomerName</td>
+                        <td>@arif.Phone</td>
+                        <td>
+                            <a class="btn btn-success btn-sm" asp-controller="Customers" asp-action="Edit" asp-route-id="@arif.CustomerId"><i class="bi bi-pencil"></i></a>
+                            <a class="btn btn-outline-danger btn-sm" asp-controller="Customers" asp-action="Delete" asp-route-id="@arif.CustomerId"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section styles{
+    <link href="~/libs/icon/font/bootstrap-icons.css" rel="stylesheet" />
+}

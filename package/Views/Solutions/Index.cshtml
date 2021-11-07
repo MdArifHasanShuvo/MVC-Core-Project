@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Solution>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Solutions</h3>
+        <div class="d-flex justify-content-end mb-1">
+            <a class="btn btn-success" asp-controller="Solutions" asp-action="Create">++</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Picture</th>
+                    <th>servicePoint Name</th>
+                    <th>SolutionDate</th>
+                    <th>serviceCategory</th>
+                    <th>Customer</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td><img src="/Uploads/@p.Picture" width="40" /></td>
+                        <td>@p.servicePointName</td>
+                        <td>@p.SolutionDate</td>
+                        <td>@p.Customer.CustomerName</td>
+                        <td>@p.serviceCategory</td>
+                        <td>
+                            <a class="btn btn-outline-success btn-sm" asp-controller="Solutions" asp-action="Edit" asp-route-id="@p.SolutionId">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Solutions" asp-action="Delete" asp-route-id="@p.SolutionId"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section styles{
+    <link href="~/libs/icon/font/bootstrap-icons.css" rel="stylesheet" />
+}
+
+
+

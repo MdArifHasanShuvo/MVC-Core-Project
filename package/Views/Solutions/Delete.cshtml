@@ -1,0 +1,64 @@
+﻿@model Solution
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Delete Product</h3>
+        <form method="post" asp-action="Delete" asp-controller="Solutions" asp-route-ProductId="@Model.SolutionId" enctype="multipart/form-data">
+            <input type="hidden" asp-for="SolutionId" />
+            <div class="form-group row mb-2">
+                <label asp-for="servicePointName" class="col-form-label col-form-label-sm col-2"></label>
+                <div class="col-5">
+                    @Model.servicePointName
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label asp-for="serviceCategory" class="col-form-label col-form-label-sm col-2"></label>
+                <div class="col-5">
+                    @Model.serviceCategory
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label asp-for="SolutionDate" class="col-form-label col-form-label-sm col-2"></label>
+                <div class="col-5">
+                    @Model.SolutionDate
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label asp-for="Picture" class="col-form-label col-form-label-sm col-2"></label>
+                <div class="col-5">
+                    @Model.Picture
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <label asp-for="CustomerId" class="col-form-label col-form-label-sm col-2"></label>
+                <div class="col-5">
+                    @Model.Customer.CustomerName
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <div class="col-10 offset-2">
+                    <button type="submit" class="btn btn-primary">Confirm Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class=" col-12">
+            &lt;&lt;&lt;@Html.ActionLink("Back To List", "Index")
+    </div>
+</div>
+@section styles{
+    <link href="~/libs/picker/css/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/validate/jquery.validate.js"></script>
+    <script src="~/libs/validate/jquery.validate.unobtrusive.js"></script>
+    <script src="~/libs/picker/js/bootstrap-datepicker.js"></script>
+    <script>
+        $("#SalesDate").datepicker({
+            format: "yyyy-mm-dd"
+        });
+    </script>
+}
